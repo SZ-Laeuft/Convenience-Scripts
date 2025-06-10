@@ -1,0 +1,35 @@
+#!/bin/bash
+set -e
+trap 'echo "An error occurred. Exiting."' ERR
+
+clear
+echo "szl team software 2025 (c)"
+echo "Started at: $(date)"
+echo ""
+
+echo "Bringing down existing Docker setup..."
+cd /home/admin/
+docker compose down
+
+echo ""
+echo "Force-removing any leftover szl-api container..."
+docker rm -f $(docker ps -a --filter "name=szl-api" -q) 2>/dev/null || echo "No szl-api container found."
+
+echo ""
+echo "Removing szl-api:latest image if it exists..."
+docker rmi -f $(docker images "szl-api:latest" -q) 2>/dev/null || echo "No szl-api:latest image found."
+
+echo ""
+echo "Pulling latest szl-api (checking out main first)..."
+cd /home/admin/api/
+git checkout main
+git pull
+
+echo ""
+echo "Building and running Docker containers..."
+cd /home/admin/
+docker compose up -d
+
+echo ""
+echo "Finished at: $(date)"
+echo "gooodbye!"

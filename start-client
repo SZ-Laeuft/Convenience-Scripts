@@ -1,0 +1,12 @@
+#!/bin/bash
+clear
+echo "Team Software 2025, (c) eduard.gavrila@sz-ybbs.ac.at"
+echo ""
+echo "Updating checkpoint core"
+cd /home/checkpoint/checkpoint-core/
+git pull
+/home/checkpoint/app/bin/app &
+cd /home/checkpoint/checkpoint-core/
+. .venv/bin/activate
+sleep 3s
+python main.py > /home/checkpoint/log.txt
