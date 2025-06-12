@@ -2,7 +2,7 @@
 ### start-server
 The start-server script can be used to remove the current api docker container, remove the current api image of this container, pull the newest api image and start the container again. If you can use the docker pull and docker compose up -d command, you wont need this script.
 
-### db-backup.sh
+### db-backup
 The db-backup.sh script is designed to be used in a cron job at the event. This script will run the pg_dump command every 5 or so minutes. This command creates a .sql file on an extern drive. These backups can be used when the server craches during the event.
 
 ### reboot-checkpoints
