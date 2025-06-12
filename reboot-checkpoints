@@ -1,0 +1,10 @@
+#!/bin/bash
+echo "Rebooting Checkpoints ..."
+ssh checkpoint@192.168.68.200 "sudo reboot"
+sleep 1
+ssh checkpoint@192.168.68.201 "sudo reboot"
+sleep 1
+ssh checkpoint@192.168.68.202 "sudo reboot"
+sleep 1
+ssh checkpoint@192.168.68.203 "sudo reboot"
+echo "Done!"
