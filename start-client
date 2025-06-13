@@ -5,7 +5,7 @@ echo ""
 echo "Updating checkpoint core"
 cd /home/checkpoint/checkpoint-core/
 git pull
-/home/checkpoint/app/bin/app &
+/home/checkpoint/app/bin/app > /home/checkpoint/java-logs.txt &
 cd /home/checkpoint/checkpoint-core/
 . .venv/bin/activate
 sleep 3s
